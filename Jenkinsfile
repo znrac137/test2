@@ -1,56 +1,44 @@
-pipeline {
+ pipeline {
     agent any
-
-    triggers {
-        githubPush()
-    }
     stages {
         stage('Build') {
             steps {
-                // Use Maven to build the code
-                sh 'mvn clean package'
+                echo "Build the code using Maven"
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                // Run unit tests
-                sh 'mvn test'
-                // Run integration tests
-                sh 'integration-test-command'
+                echo "Run unit tests using JUnit"
+                echo "Run integration tests using a tool like Selenium or Cucumber"
             }
         }
         stage('Code Analysis') {
             steps {
-                // Integrate SonarQube for code analysis
-                sh 'sonarqube-command'
+                echo "Integrate a code analysis tool like SonarQube"
             }
         }
         stage('Security Scan') {
             steps {
-                // Perform security scan
-                sh 'security-scan-command'
+                echo "Perform a security scan using a tool like OWASP ZAP or SonarQube"
             }
         }
         stage('Deploy to Staging') {
             steps {
-                // Deploy to staging server
-                sh 'deploy-to-staging-command'
+                echo "Deploy the application to a staging server using a tool like AWS CLI or Jenkins SSH plugin"
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                // Run integration tests on staging
-                sh 'integration-test-on-staging-command'
+                echo "Run integration tests on the staging environment"
             }
         }
         stage('Deploy to Production') {
             steps {
-                // Deploy to production server
-                sh 'deploy-to-production-command'
+                echo "Deploy the application to a production server using a tool like AWS CLI or Jenkins SSH plugin"
             }
         }
     }
-  post{
+    post{
         success{
             mail to: "sunerar007@gmail.com",
             subject: "Pipeline Status Email!",

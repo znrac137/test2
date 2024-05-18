@@ -40,7 +40,7 @@
     }
     post{
         success{
-            mail to: "sunerar007@gmail.com",
+            mail to: "snraranaa@gmail.com",
             subject: "Pipeline Status Email!",
             body: "Pipeline was successfully!!"
         }
